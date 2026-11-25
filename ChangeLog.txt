@@ -1,0 +1,126 @@
+******* Changes from v3 to v4:
+
+Add a "Shortblade" line of Mesmer attacks, admitting the use of one-handed
+        swords and/or daggers (put what you like in your off-hand).
+        Shortblade attacks feature non-standard targeting (e.g., two-stage
+        attacks, often with two targeting steps). With their focus on
+        complicated positioning and targeting they add options for skilled
+        players.
+
+Complete reworking of Mesmer Fatigue. Based on forum comments (e.g.,
+        light armor isn't actually that helpful, not being able to use gear
+        "feels bad", don't change gear because it messes up the item vault,
+        etc.), Mesmers can now use any gear but their primary talent
+        cooldowns are influenced by fatigue. That is, where fatigue
+        would influence mana cost of an Archmage's spell, here fatigue 
+        influences the"time cost" of a Mesmer's talents. 
+
+Weapons available: broaden the set of available weapons. Greatblade
+        talents require greatswords or tridents; Shortblade talents require
+        swords or daggers; and Staff talents require staves or greatmauls.
+
+Phantasmal Warlock, Berserker and Bladefighter: reduce the starting
+        health and damage percentages slightly to nerf these summons a bit.
+
+Mesmers now start with a (useless) "Mana Pool" so that they look like
+        a magic-using class (e.g., for Zigur). 
+
+Fixed an "infinite combat_atk" bug related to applying "on melee hit"
+        effects. 
+
+Remove the special Mesmer combat talent stat damage calculation and replace
+        it with the vanilla one. This slightly reduces Mesmer damage in the
+        early game.
+
+Illusionary Wave -- fixed a crashing bug. 
+
+Mirror Blade typo: it now (correctly) states that it applies Mesmeric
+        Overload (not "Power Overload"). The intent is to have only one
+        "mesmer bounce power buff" to worry about (and we max/merge the
+        power and the duration if you re-apply it to yourself from any
+        source). 
+
+******* Changes from v2 to v3:
+
+Fixed the tricky bug that was causing some to think Staff underpowered and
+        some to think Staff overpowered. The default engine code for
+        stacking bleeds and burns adds the total damage together but
+        keeps the original source. So if the first attack to hit a foe
+        came from an illusion (at 2% damage), subsequent stacking from
+        you (should be 100% damage) would appear to come from the illusion
+        and thus only deal 2% damage. Conversely, if the first attack to
+        hit a foe came from you (at 100% damage), subsequent stacks from
+        illusions would end up dealing full damage! 
+        
+        This explains the experience where some would report easily killing
+        a boss with a room of staff illusions (first hit from you or a
+        warlock) and some would report the staff as largely worthless
+        (first hit from illusions). 
+
+        Now instead of stacking, if a victim already has a Mesmer DOT of
+        type X and gets hit with another Mesmer DOT of type X, the first
+        one discharges all at once (from its source) and the second one is
+        then applied over time as normal (from its source). 
+
+Winds of Chaos typo: arcane DOT was lasting 7 turns instead of 4
+
+Greatsword and Staff attacks now may apply weapon "on melee hit" effects.
+        There was a strong sense that there was no reason to get a better
+        greatsword (and only a little reason to get a better staff). Now in
+        addition to looking for defensive weapons, weapons that grant
+        talents, weapons that grant ability score boosts, and weapons that
+        grant speed or mobility, you can also look for weapons that grant
+        "on melee hit" powers. 
+
+Illusionary Wave: reworked to avoid strange "pinning" reference from old
+        Chronomancer code. Now sends out three separate waves, each of
+        which knocks back (and applies "on hit" damage). As a result,
+        foes will either get knocked far away for moderate damage, or 
+        foes that cannot be knocked away (near walls, etc.) will take
+        higher damage.
+
+Mantra Meditation is now a passive. You can view the cooldown timer by
+        inspecting it in your 'talent list' menu.
+
+Major Todo:
+        (1) Find better handling for Mesmer Worn Equipment. 
+Minor Todo:
+        Chaos Storm graphic may not match radius.
+        The usual ToME engine bugs for summons (cf. Marson) apply here.
+
+******* Changes from v1 to v2:
+
+Damage Types: change from Physical (Bleed), Nature (Poison) and Fire
+        (burning) to Physical, Arcane (custom DOT) and Light (custom DOT).
+        This is to prevent Staff from being randomly useless to the
+        significant number of enemies immune to bleed/poison.
+
+"Manual Assign Talent Points at Birth" now works with Mantra Meditation 
+
+Arcane Thievery - now improves with points spent (as originally intended)
+
+Number of stored mantras downgraded to 1-1-2-2-3 (over 5 talent points).
+
+Decoy clone count downgraded to 1-1-2-2-3 (over 5 talent points).
+
+Distortion now scales invis power as well as invis duration
+
+Reduce Mind Wrack damage from "200% Shatter" to "150% Shatter". 
+
+Signet of Midnight -- clarify wording.
+
+Signet of Illusions -- cooldown unified with other signets.
+
+Signets: deactivating a signet now correctly takes no time.
+
+Phantasmal Warlock / berserker can now be cast "through" creatures.
+
+Mind Stab "effect removal" count scaling reduced to 1-2-3-4-5. 
+
+Mesmeric Overload, the buff from Winds of Chaos and Mirror Blade (etc.)
+        now has a cap of +10% damage per talent level to help prevent
+        Winds of Chaos from being a "one point wonder" where swarms of
+        illusions do "more damage than expected" at low levels. 
+
+Special thanks to Hogulus, Scol, marshmallowpeep, cryol and joebobjoe for
+their detailed feedback on v1.
